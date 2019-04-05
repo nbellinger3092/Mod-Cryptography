@@ -11,14 +11,14 @@ import EllipticAdd
 
 newNum = []
 
-n = 13
-p = 7
+n = 1000000
+p = 1386493
 
-A = 1
+A = 3
 
 # P
-x1 = 2
-y1 = 3
+x1 = 1
+y1 = 1
 
 #def EllipticAdd(x1,y1,x2,y2,A,p):
 #    m = ((3 * (pow(x1,2)) + A) * pow((2 * y1),p-2,p)) % p
@@ -36,17 +36,19 @@ def FastMultiple(n,x1,y1,p,A):
 
     # Split reversed binary representation into a list
     lst_n = list(rev_n)
-
+    
+    x3, y3 = ('O','O')
+    
     for x in range(len(lst_n)):
-        print("x: " + str(x))
+        if x ==0:
+            temp1, temp2 = x1,y1
+        else:
+            temp1, temp2 = EllipticAdd.EllipticAdd(temp1, temp2, temp1, temp2, A, p)
+ 
         if int(lst_n[x]) == 1:
-            if x == 0:
-                x3,y3 = EllipticAdd.EllipticAdd(x1,y1,x1,y1,A,p)
-                print("2P: " + str(x3) + "," + str(y3))
-            elif x > 0:
-                temp1,temp2 = EllipticAdd.EllipticAdd(x3,y3,x3,y3,A,p)
-                x3,y3 = EllipticAdd.EllipticAdd(x3,y3,temp1,temp2,A,p)
+            x3,y3 = EllipticAdd.EllipticAdd(temp1, temp2, x3, y3, A, p)
     return x3,y3
+#print(n,p, x1, y1)
 x3,y3 = FastMultiple(n,x1,y1,p,A)
-print("Final: "+ str(x3) + "," + str(y3))
+#print("Final: "+ str(x3) + "," + str(y3))
 #print("nP = " + str(nP))
