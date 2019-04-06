@@ -35,7 +35,8 @@ def EllipticAdd(x1,y1,x2,y2,A,p):
 
     # P = Q
     def case2(x1,y1,x2,y2,A,p):
-        m = ((3 * (pow(x1,2)) + A) * pow((2*y1),p-2,p)) % p
+		#m = ((3 * (pow(x1,2)) + A) * pow((2*y1),p-2,p)) % p
+        m = ((3 * (pow(x1,2)) + A) * FastInverseAlgorithm.FastInverse(2*y1,p)) % p
         x3 = ((pow(m,2)) - x1 - x2) % p
         y3 = (m * (x1 - x3) - y1) % p  
         print("R = (" + str(x3) + "," + str(y3) + ")")
@@ -43,23 +44,34 @@ def EllipticAdd(x1,y1,x2,y2,A,p):
 
     # Q = P'
     def case3():   
-        R = '∞'   
+        R = 'O'   
         print("R = " + R)
+        return R,R
 
     # Q = ∞
     def case4():   
-        x3 = x1
-        y3 = y1   
-        print("R = (" + str(x3) + "," + str(y3) + ")")
+        return x1,y1
 
+    def case5():
+    	return x2,y2
+
+    if x2 == 'O' and y2 == 'O':
+    	return case4()
+
+    if x1=='O' and x2 == 'O':
+    	return case5()
+    
     if x1 != x2 and y1 != (y2 - 2 * y2):
-        case1(x1,y1,x2,y2,p)
+        return case1(x1,y1,x2,y2,p)
 
     if x1 == x2 and y1 == y2:
-        case2(x1,y1,x2,y2,A,p)
+        return case2(x1,y1,x2,y2,A,p)
 
     if x2 == x1 and y2 == (y1 - 2 * y1):
-        case4()
+       return case3()
+
+
+
 EllipticAdd(x1,y2,x2,y2,A,p)
 end = time.time()
 
