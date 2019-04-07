@@ -8,16 +8,12 @@ def FastPower(g,M,N):
         # Declare variables
         finalNum = 1
         newInt = []
-
-        # Read in integer g and power M from user
-        #g = input("Please enter integer to be raised to a power: ")
-        #M = input("Please enter power to raise " + g + " to: ")
-        #N = input("Please enter mod ""N"" value: ")
+        append = newInt.append #Makes it slightly faster to initialize this than to call it in the loop
 
         # Convert string to decimal
-        g = int(g)
-        M = int(M)
-        N = int(N)
+        #g = int(g)
+        #M = int(M)
+        #N = int(N)
 
         # Convert power to binary
         bin_M = bin(M)[2:]
@@ -32,12 +28,15 @@ def FastPower(g,M,N):
         # and append to newInt list
         for x in range(len(lst_M)):
                 if int(lst_M[x]) == 1:
-                        newInt.append((pow(g,pow(2,x)))%N)
-
+                        append((pow(g,pow(2,x)))%N)
+                        #newInt.append((g ** (2 ** x))%N) # This works too
+                        
         # Multiply values of newInt list mod N and store in finalNum
         for x in range(len(newInt)):
                 finalNum = (finalNum * newInt[x])%N
+        #test = map(lambda finalNum : (finalNum * newInt)%N,newInt)
 
         # Print answer mod N
         # print("The answer is: " + str(finalNum) + " mod " + str(N))
         return finalNum
+        #return int(test)

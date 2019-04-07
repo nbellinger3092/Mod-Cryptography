@@ -30,7 +30,7 @@ def EllipticAdd(x1,y1,x2,y2,A,p):
         #m = temp1 * pow(temp2,p-2,p)  This works too.
         x3 = ((pow(m,2)) - x1 - x2) % p
         y3 = (m * (x1 - x3) - y1) % p
-        print("R = (" + str(x3) + "," + str(y3) + ")")
+        #print("R = (" + str(x3) + "," + str(y3) + ")")
         return x3,y3
 
     # P = Q
@@ -39,7 +39,7 @@ def EllipticAdd(x1,y1,x2,y2,A,p):
         m = ((3 * (pow(x1,2)) + A) * FastInverseAlgorithm.FastInverse(2*y1,p)) % p
         x3 = ((pow(m,2)) - x1 - x2) % p
         y3 = (m * (x1 - x3) - y1) % p  
-        print("R = (" + str(x3) + "," + str(y3) + ")")
+        #print("R = (" + str(x3) + "," + str(y3) + ")")
         return x3,y3
 
     # Q = P'
@@ -76,4 +76,4 @@ EllipticAdd(x1,y2,x2,y2,A,p)
 end = time.time()
 
 #Prints runtime of program
-print("Runtime: " + str(end-start))
+#print("Runtime: " + str(end-start))
