@@ -4,12 +4,14 @@
 ## 3/28/19
 
 # Takes in p, n, P and returns nP
-
+import time
 import FastInverseAlgorithm
 import FastPoweringAlgorithm
 import EllipticAdd
 
 newNum = []
+
+start = time.time()
 
 n = 1000000
 p = 1386493
@@ -19,13 +21,6 @@ A = 3
 # P
 x1 = 1
 y1 = 1
-
-#def EllipticAdd(x1,y1,x2,y2,A,p):
-#    m = ((3 * (pow(x1,2)) + A) * pow((2 * y1),p-2,p)) % p
-#    x3 = ((pow(m,2)) - x1 - x2) % p
-#    y3 = (m * (x1 - x3) - y1) % p
-#    print("R = (" + str(x3) + "," + str(y3) + ")")
-#    return x3,y3
 
 def FastMultiple(n,x1,y1,p,A):
     nP = 0
@@ -48,7 +43,9 @@ def FastMultiple(n,x1,y1,p,A):
         if int(lst_n[x]) == 1:
             x3,y3 = EllipticAdd.EllipticAdd(temp1, temp2, x3, y3, A, p)
     return x3,y3
-#print(n,p, x1, y1)
-x3,y3 = FastMultiple(n,x1,y1,p,A)
-#print("Final: "+ str(x3) + "," + str(y3))
-#print("nP = " + str(nP))
+
+#Uncomment this line when running solo.  Comment when importing to another program
+#x3,y3 = FastMultiple(n,x1,y1,p,A)
+
+end = time.time()
+#print("Runtime: " + str(end-start))
