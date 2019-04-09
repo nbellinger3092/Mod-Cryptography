@@ -71,8 +71,8 @@ def EllipticAdd(x1,y1,x2,y2,A,p):
        return case3()
 
 
-
-EllipticAdd(x1,y2,x2,y2,A,p)
+#Uncomment this line when running solo.  Comment when importing to another program
+#EllipticAdd(x1,y2,x2,y2,A,p)
 end = time.time()
 
 #Prints runtime of program

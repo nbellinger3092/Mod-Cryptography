@@ -35,7 +35,7 @@ def FastMultiple(n,x1,y1,p,A):
     x3, y3 = ('O','O')
     
     for x in range(len(lst_n)):
-        if x ==0:
+        if x == 0:
             temp1, temp2 = x1,y1
         else:
             temp1, temp2 = EllipticAdd.EllipticAdd(temp1, temp2, temp1, temp2, A, p)
