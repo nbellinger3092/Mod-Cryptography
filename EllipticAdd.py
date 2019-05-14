@@ -4,7 +4,7 @@
 ## 3/27/2019
 
 import time
-import FastInverseAlgorithm
+import FastInverseAlgorithm as FI
 
 # Given A, p, P, and Q, return R
 
@@ -26,7 +26,7 @@ def EllipticAdd(x1,y1,x2,y2,A,p):
     def case1(x1,y1,x2,y2,p):
         temp1 = y2 - y1
         temp2 = x2 - x1
-        m = (temp1 * FastInverseAlgorithm.FastInverse(temp2,p)) % p
+        m = (temp1 * FI.FastInverse(temp2,p)) % p
         #m = temp1 * pow(temp2,p-2,p)  This works too.
         x3 = ((pow(m,2)) - x1 - x2) % p
         y3 = (m * (x1 - x3) - y1) % p
@@ -36,7 +36,7 @@ def EllipticAdd(x1,y1,x2,y2,A,p):
     # P = Q
     def case2(x1,y1,x2,y2,A,p):
 		#m = ((3 * (pow(x1,2)) + A) * pow((2*y1),p-2,p)) % p
-        m = ((3 * (pow(x1,2)) + A) * FastInverseAlgorithm.FastInverse(2*y1,p)) % p
+        m = ((3 * (pow(x1,2)) + A) * FI.FastInverse(2*y1,p)) % p
         x3 = ((pow(m,2)) - x1 - x2) % p
         y3 = (m * (x1 - x3) - y1) % p  
         #print("R = (" + str(x3) + "," + str(y3) + ")")

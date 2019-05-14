@@ -5,8 +5,6 @@
 
 # Takes in p, n, P and returns nP
 import time
-import FastInverseAlgorithm
-import FastPoweringAlgorithm
 import EllipticAdd
 
 newNum = []
@@ -45,7 +43,7 @@ def FastMultiple(n,x1,y1,p,A):
     return x3,y3
 
 #Uncomment this line when running solo.  Comment when importing to another program
-#x3,y3 = FastMultiple(n,x1,y1,p,A)
+x3,y3 = FastMultiple(n,x1,y1,p,A)
 
 end = time.time()
-#print("Runtime: " + str(end-start))
+print("Runtime: " + str(end-start))

@@ -4,10 +4,11 @@
 ## 5/11/19
 
 import time
-import FastInverseAlgorithm# as FI
+import FastInverseAlgorithm as FI
 import FastMultiply# as FM
+import time
 
-p = 200009
+p = 200000081
 
 x1 = 6   # Point on E
 y1 = 730 #
@@ -15,7 +16,7 @@ y1 = 730 #
 A = 14
 
 na = 947
-
+start = time.time()
 #################################
 #             Alice             #
 #################################
@@ -30,8 +31,8 @@ Qa = FastMultiply.FastMultiple(na,x1,y1,p,A)
 #################################
 # Picks message m1, m2
 
-message1 = "AC"
-message2 = "BD"
+message1 = "A+C"
+message2 = "B&D"
 encodedMessage1 = ""
 encodedMessage2 = ""
 
@@ -65,8 +66,8 @@ c2 = (S[1] * m2) % p
 
 T = FastMultiply.FastMultiple(na,R[0],R[1],p,A)
 
-m1 = (FastInverseAlgorithm.FastInverse(T[0],p) * c1) % p
-m2 = (FastInverseAlgorithm.FastInverse(T[1],p) * c2) % p
+m1 = (FI.FastInverse(T[0],p) * c1) % p
+m2 = (FI.FastInverse(T[1],p) * c2) % p
 
 str_m1 = str(m1)
 str_m2 = str(m2)

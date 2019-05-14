@@ -3,11 +3,11 @@
 ##Mod Cryptography
 ##2/7/19
 
-import FastPoweringAlgorithm as FP
+import FasterPower as FP
 import time
 
-#a = input("Please enter base number 'a': ")
-#p = input("Please enter field 'p': " )
+# a = input("Please enter base number 'a': ")
+# p = input("Please enter field 'p': " )
 x = 0
 start = time.time()
 def FastInverse(a,p):
@@ -38,7 +38,7 @@ def FastInverse(a,p):
         for x in range(len(lst_p)):
                 if int(lst_p[x]) == 1:
                         #newInt.append((pow(a,pow(2,x)))%p) # This works too
-                        newInt.append(FP.FastPower(a,FP.FastPower(2,x,p),p)%p)
+                        newInt.append(FP.pow_mod(a,FP.pow_mod(2,x,p),p)%p)
 
         #Multiply values of newInt list mod N and store in finalNum
         for x in range(len(newInt)):
@@ -49,7 +49,7 @@ def FastInverse(a,p):
         return finalNum%p
 
 #Uncomment these lines when running solo.  Comment when importing to another program
-#x = FastInverse(a,p)
-#print("Inverse: " + str(x))
-#end = time.time()
-#print("Fast Inverse Runtime: " + str(end-start))
+# x = FastInverse(a,p)
+# print("Inverse: " + str(x))
+# end = time.time()
+# print("Fast Inverse Runtime: " + str(end-start))
